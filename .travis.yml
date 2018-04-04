@@ -1,0 +1,15 @@
+sudo: required
+dist: trusty
+language: node_js
+node_js:
+  - 8.2.1
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - libkrb5-dev
+script: npm run ci
+cache:
+  directories:
+    - node_modules
