@@ -15,12 +15,10 @@ const tools = ace.acequire('ace/ext/language_tools');
 const textCompleter = tools.textCompleter;
 
 // For auto completion of agg pipeline stages, pass the server version,
-// the text completer, the stage index in the pipeline, the schema fields,
-// and the stage operator.
+// the text completer, the schema fields, and the stage operator.
 const stageAutoCompleter = new StageAutoCompleter(
   '3.6.0',
   textCompleter,
-  1,
   { name: 'String' }
   '$match'
 );

@@ -17,7 +17,7 @@ describe('StageAutoCompleter', () => {
   describe('#getCompletions', () => {
     context('when the current token is a string', () => {
       context('when there are no previous autocompletions', () => {
-        const completer = new StageAutoCompleter('3.4.0', textCompleter, 0, fields, null);
+        const completer = new StageAutoCompleter('3.4.0', textCompleter, fields, null);
         const session = new EditSession('', new Mode());
         const position = { row: 0, column: 0 };
 
@@ -31,7 +31,7 @@ describe('StageAutoCompleter', () => {
 
       context('when there are previous autocompletions', () => {
         context('when the latest token is a string', () => {
-          const completer = new StageAutoCompleter('3.4.0', textCompleter, 0, fields, null);
+          const completer = new StageAutoCompleter('3.4.0', textCompleter, fields, null);
           const session = new EditSession('{ $project: { "$', new Mode());
           const position = { row: 0, column: 15 };
 
@@ -53,7 +53,7 @@ describe('StageAutoCompleter', () => {
 
       context('when there are tokens after', () => {
         context('when the latest token is a string', () => {
-          const completer = new StageAutoCompleter('3.4.0', textCompleter, 0, fields, null);
+          const completer = new StageAutoCompleter('3.4.0', textCompleter, fields, null);
           const session = new EditSession('{ $match: { $and: [ "$var1", "$var2" ]}}', new Mode());
           const position = { row: 0, column: 32 };
 
@@ -90,7 +90,7 @@ describe('StageAutoCompleter', () => {
       context('when no stage operator has been defined', () => {
         context('when the version is not provided', () => {
           context('when the prefix is empty', () => {
-            const completer = new StageAutoCompleter('3.4.0', textCompleter, 0, fields, null);
+            const completer = new StageAutoCompleter('3.4.0', textCompleter, fields, null);
             const session = new EditSession('', new Mode());
             const position = { row: 0, column: 0 };
 
@@ -105,7 +105,7 @@ describe('StageAutoCompleter', () => {
           context('when the prefix begins with a letter', () => {
             context('when the token is on the same line', () => {
               context('when the token matches a field', () => {
-                const completer = new StageAutoCompleter('3.6.0', textCompleter, 0, fields, null);
+                const completer = new StageAutoCompleter('3.6.0', textCompleter, fields, null);
                 const session = new EditSession('{ n', new Mode());
                 const position = { row: 0, column: 2 };
 
@@ -119,7 +119,7 @@ describe('StageAutoCompleter', () => {
                 });
               });
               context('when the token matches a BSON type', () => {
-                const completer = new StageAutoCompleter('3.6.0', textCompleter, 0, fields, null);
+                const completer = new StageAutoCompleter('3.6.0', textCompleter, fields, null);
                 const session = new EditSession('{ N', new Mode());
                 const position = { row: 0, column: 2 };
 
@@ -137,7 +137,7 @@ describe('StageAutoCompleter', () => {
 
           context('when the prefix begins with $', () => {
             context('when the token is on the same line', () => {
-              const completer = new StageAutoCompleter('3.6.0', textCompleter, 0, fields, null);
+              const completer = new StageAutoCompleter('3.6.0', textCompleter, fields, null);
               const session = new EditSession('{ $', new Mode());
               const position = { row: 0, column: 2 };
 
@@ -150,7 +150,7 @@ describe('StageAutoCompleter', () => {
             });
 
             context('when the token is on another line', () => {
-              const completer = new StageAutoCompleter('3.6.0', textCompleter, 0, fields, null);
+              const completer = new StageAutoCompleter('3.6.0', textCompleter, fields, null);
               const session = new EditSession('{\n  $', new Mode());
               const position = { row: 1, column: 3 };
 
@@ -164,7 +164,7 @@ describe('StageAutoCompleter', () => {
           });
 
           context('when the prefix begins with an unknown', () => {
-            const completer = new StageAutoCompleter('3.4.0', textCompleter, 0, fields, null);
+            const completer = new StageAutoCompleter('3.4.0', textCompleter, fields, null);
             const session = new EditSession('{ $notAnOp', new Mode());
             const position = { row: 0, column: 9 };
 
@@ -177,7 +177,7 @@ describe('StageAutoCompleter', () => {
           });
 
           context('when the prefix begins with $a', () => {
-            const completer = new StageAutoCompleter('3.4.0', textCompleter, 0, fields, null);
+            const completer = new StageAutoCompleter('3.4.0', textCompleter, fields, null);
             const session = new EditSession('{ $a', new Mode());
             const position = { row: 0, column: 3 };
 
@@ -233,7 +233,7 @@ describe('StageAutoCompleter', () => {
           });
 
           context('when the prefix begins with $co', () => {
-            const completer = new StageAutoCompleter('3.4.0', textCompleter, 0, fields, null);
+            const completer = new StageAutoCompleter('3.4.0', textCompleter, fields, null);
             const session = new EditSession('{ $co', new Mode());
             const position = { row: 0, column: 4 };
 
@@ -268,7 +268,7 @@ describe('StageAutoCompleter', () => {
           });
 
           context('when the prefix begins with $sec', () => {
-            const completer = new StageAutoCompleter('3.4.0', textCompleter, 0, fields, null);
+            const completer = new StageAutoCompleter('3.4.0', textCompleter, fields, null);
             const session = new EditSession('{ $sec', new Mode());
             const position = { row: 0, column: 4 };
 
@@ -290,7 +290,7 @@ describe('StageAutoCompleter', () => {
         });
 
         context('when the version is provided', () => {
-          const completer = new StageAutoCompleter('3.0.0', null, 0, fields, null);
+          const completer = new StageAutoCompleter('3.0.0', null, fields, null);
           const session = new EditSession('{ $si', new Mode());
           const position = { row: 0, column: 4 };
 
@@ -315,7 +315,7 @@ describe('StageAutoCompleter', () => {
         context('when the stage operator is $project', () => {
           context('when the server version is 3.2.0', () => {
             context('when the stage is a single line', () => {
-              const completer = new StageAutoCompleter('3.2.0', null, 0, fields, '$project');
+              const completer = new StageAutoCompleter('3.2.0', null, fields, '$project');
               const session = new EditSession('{ $m', new Mode());
               const position = { row: 0, column: 3 };
 
@@ -394,7 +394,7 @@ describe('StageAutoCompleter', () => {
             });
 
             context('when the stage is on multiple lines', () => {
-              const completer = new StageAutoCompleter('3.2.0', null, 0, fields, '$project');
+              const completer = new StageAutoCompleter('3.2.0', null, fields, '$project');
               const session = new EditSession('{\n  $m', new Mode());
               const position = { row: 1, column: 4 };
 
@@ -475,7 +475,7 @@ describe('StageAutoCompleter', () => {
 
           context('when the server version is 3.4.0', () => {
             context('when the accumulators are valid in $project', () => {
-              const completer = new StageAutoCompleter('3.4.0', null, 0, fields, '$project');
+              const completer = new StageAutoCompleter('3.4.0', null, fields, '$project');
               const session = new EditSession('{ $m', new Mode());
               const position = { row: 0, column: 3 };
 
@@ -554,7 +554,7 @@ describe('StageAutoCompleter', () => {
             });
 
             context('when the accumulators are not valid in $project', () => {
-              const completer = new StageAutoCompleter('3.4.0', null, 0, fields, '$project');
+              const completer = new StageAutoCompleter('3.4.0', null, fields, '$project');
               const session = new EditSession('{ $p', new Mode());
               const position = { row: 0, column: 3 };
 
@@ -576,7 +576,7 @@ describe('StageAutoCompleter', () => {
           });
 
           context('when the server version is 3.0.0', () => {
-            const completer = new StageAutoCompleter('3.0.0', null, 0, fields, '$project');
+            const completer = new StageAutoCompleter('3.0.0', null, fields, '$project');
             const session = new EditSession('{ $e', new Mode());
             const position = { row: 0, column: 3 };
 
@@ -599,7 +599,7 @@ describe('StageAutoCompleter', () => {
 
         context('when the stage operator is $group', () => {
           context('when the server version is 3.2.0', () => {
-            const completer = new StageAutoCompleter('3.2.0', null, 0, fields, '$group');
+            const completer = new StageAutoCompleter('3.2.0', null, fields, '$group');
             const session = new EditSession('{ $m', new Mode());
             const position = { row: 0, column: 3 };
 
@@ -678,7 +678,7 @@ describe('StageAutoCompleter', () => {
           });
 
           context('when the server version is 3.4.0', () => {
-            const completer = new StageAutoCompleter('3.4.0', null, 0, fields, '$group');
+            const completer = new StageAutoCompleter('3.4.0', null, fields, '$group');
             const session = new EditSession('{ $p', new Mode());
             const position = { row: 0, column: 3 };
 
@@ -706,7 +706,7 @@ describe('StageAutoCompleter', () => {
           });
 
           context('when the server version is 3.0.0', () => {
-            const completer = new StageAutoCompleter('3.0.0', null, 0, fields, '$group');
+            const completer = new StageAutoCompleter('3.0.0', null, fields, '$group');
             const session = new EditSession('{ $e', new Mode());
             const position = { row: 0, column: 3 };
 
@@ -729,7 +729,7 @@ describe('StageAutoCompleter', () => {
 
         context('when the stage operator is not project or group', () => {
           context('when the version matches all', () => {
-            const completer = new StageAutoCompleter('3.4.5', null, 0, fields, '$addToFields');
+            const completer = new StageAutoCompleter('3.4.5', null, fields, '$addToFields');
             const session = new EditSession('{ $ar', new Mode());
             const position = { row: 0, column: 4 };
 
@@ -757,7 +757,7 @@ describe('StageAutoCompleter', () => {
           });
 
           context('when the version matches a subset', () => {
-            const completer = new StageAutoCompleter('3.4.0', null, 0, fields, '$addToFields');
+            const completer = new StageAutoCompleter('3.4.0', null, fields, '$addToFields');
             const session = new EditSession('{ $ar', new Mode());
             const position = { row: 0, column: 4 };
 
