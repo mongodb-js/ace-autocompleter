@@ -1,6 +1,6 @@
 const { EditSession } = require('brace');
 const ace = require('brace');
-const { QueryAutoCompleter, QUERY_OPERATORS } = require('../');
+const { QueryAutoCompleter } = require('../');
 
 require('brace/mode/javascript');
 require('brace/ext/language_tools');
@@ -41,7 +41,7 @@ describe('QueryAutoCompleter', () => {
 
       });
 
-      context('when the version doesnt match all operators',  () => {
+      context('when the version doesnt match all operators', () => {
 
       });
 
