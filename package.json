@@ -1,0 +1,23 @@
+{
+  "name": "mongodb-ace-autocompleter",
+  "version": "0.0.0",
+  "description": "Ace Editor Autocompleter for MongoDB Queries & Agg Pipelines",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mongodb-js/ace-autocompleter.git"
+  },
+  "keywords": [
+    "MongoDB",
+    "Ace"
+  ],
+  "author": "durran@gmail.com",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/mongodb-js/ace-autocompleter/issues"
+  },
+  "homepage": "https://github.com/mongodb-js/ace-autocompleter#readme"
+}
