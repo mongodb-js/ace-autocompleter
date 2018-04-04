@@ -4,7 +4,7 @@
 
 ### Usage with Ace editor
 
-Autocompletion on aggregation pipeline stages.
+Autocompletion on aggregation pipeline stages:
 
 ```javascript
 import ace from 'brace';
@@ -27,7 +27,7 @@ const stageAutoCompleter = new StageAutoCompleter(
 tools.setCompleters([ stageAutoCompleter ]);
 ```
 
-Autocompletion on queries.
+Autocompletion on queries:
 
 ```javascript
 import ace from 'brace';
