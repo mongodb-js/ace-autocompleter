@@ -4,7 +4,7 @@
   "description": "Ace Editor Autocompleter for MongoDB Queries & Agg Pipelines",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive"
+    "test": "mocha --recursive test/setup.js ./test/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -26,7 +26,6 @@
     "jsdom": "^11.7.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^5.0.5",
-    "redux": "^3.7.2",
     "sinon": "^4.5.0",
     "sinon-chai": "^3.0.0"
   },
