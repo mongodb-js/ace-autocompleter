@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "check": "mongodb-js-precommit './lib/**/*.js' './test/**/*.js'",
-    "test": "mocha --recursive test/setup.js ./test/**/*.test.js"
+    "test": "mocha --recursive test/setup.js ./test/**/*.test.js",
+    "ci": "npm run test",
+    "preci": "npm run check"
   },
   "precommit": [
     "check"
