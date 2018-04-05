@@ -10,7 +10,20 @@ const { textCompleter } = ace.acequire('ace/ext/language_tools');
 
 describe('QueryAutoCompleter', () => {
   const fields = [
-    { name: 'name', value: 'name', score: 1, meta: 'field', version: '0.0.0' }
+    {
+      name: 'name',
+      value: 'name',
+      score: 1,
+      meta: 'field',
+      version: '0.0.0'
+    },
+    {
+      name: 'name.first',
+      value: 'name.first',
+      score: 1,
+      meta: 'field',
+      version: '0.0.0'
+    }
   ];
   const editor = sinon.spy();
 
