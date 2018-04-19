@@ -41,9 +41,9 @@ describe('StageAutoCompleter', () => {
               expect(results).to.deep.equal([
                 {
                   'meta': 'field',
-                  'name': 'name',
+                  'name': '$name',
                   'score': 1,
-                  'value': 'name',
+                  'value': '$name',
                   'version': '0.0.0'
                 }
               ]);
@@ -63,9 +63,9 @@ describe('StageAutoCompleter', () => {
             expect(results).to.deep.equal([
               {
                 'meta': 'field',
-                'name': 'name',
+                'name': '$name',
                 'score': 1,
-                'value': 'name',
+                'value': '$name',
                 'version': '0.0.0'
               }
             ]);
