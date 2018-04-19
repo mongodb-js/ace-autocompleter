@@ -35,18 +35,40 @@ describe('StageAutoCompleter', () => {
           const session = new EditSession('{ $project: { "$', new Mode());
           const position = { row: 0, column: 15 };
 
-          it('returns only the previous results', () => {
+          it('returns the field names', () => {
             completer.getCompletions(editor, session, position, '$', (error, results) => {
               expect(error).to.equal(null);
               expect(results).to.deep.equal([
                 {
-                  'caption': '$project',
-                  'meta': 'local',
-                  'score': 2,
-                  'value': '$project'
+                  'meta': 'field',
+                  'name': 'name',
+                  'score': 1,
+                  'value': 'name',
+                  'version': '0.0.0'
                 }
               ]);
             });
+          });
+        });
+      });
+
+      context('when the previous token is an accumulator', () => {
+        const completer = new StageAutoCompleter('3.6.0', textCompleter, fields, null);
+        const session = new EditSession('{ _id: null, avgDur: { $avg: "$"}}', new Mode());
+        const position = { row: 0, column: 31 };
+
+        it('returns the field names', () => {
+          completer.getCompletions(editor, session, position, '$', (error, results) => {
+            expect(error).to.equal(null);
+            expect(results).to.deep.equal([
+              {
+                'meta': 'field',
+                'name': 'name',
+                'score': 1,
+                'value': 'name',
+                'version': '0.0.0'
+              }
+            ]);
           });
         });
       });
