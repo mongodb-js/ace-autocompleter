@@ -73,6 +73,38 @@ describe('StageAutoCompleter', () => {
         });
       });
 
+      context('when the field names have special characters', () => {
+        const oddFields = [
+          { name: '"name.test"', value: '"name.test"', score: 1, meta: 'field', version: '0.0.0' },
+          { name: '"name space"', value: '"name space"', score: 1, meta: 'field', version: '0.0.0' }
+        ];
+        const completer = new StageAutoCompleter('3.6.0', textCompleter, oddFields, null);
+        const session = new EditSession('{ _id: null, avgDur: { $avg: "$"}}', new Mode());
+        const position = { row: 0, column: 31 };
+
+        it('returns the field names without the quotes', () => {
+          completer.getCompletions(editor, session, position, '$', (error, results) => {
+            expect(error).to.equal(null);
+            expect(results).to.deep.equal([
+              {
+                'meta': 'field',
+                'name': '$name.test',
+                'score': 1,
+                'value': '$name.test',
+                'version': '0.0.0'
+              },
+              {
+                'meta': 'field',
+                'name': '$name space',
+                'score': 1,
+                'value': '$name space',
+                'version': '0.0.0'
+              }
+            ]);
+          });
+        });
+      });
+
       context('when there are tokens after', () => {
         context('when the latest token is a string', () => {
           const completer = new StageAutoCompleter('3.4.0', textCompleter, fields, null);
