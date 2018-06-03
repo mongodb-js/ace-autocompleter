@@ -28,6 +28,32 @@ describe('QueryAutoCompleter', () => {
   const editor = sinon.spy();
 
   describe('#getCompletions', () => {
+    context('when fields is null', () => {
+      const completer = new QueryAutoCompleter('3.4.0', textCompleter, null);
+      const session = new EditSession('', new Mode());
+      const position = { row: 0, column: 0 };
+
+      it('returns no results', () => {
+        completer.getCompletions(editor, session, position, '', (error, results) => {
+          expect(error).to.equal(null);
+          expect(results).to.deep.equal([]);
+        });
+      });
+    });
+
+    context('when the fields are empty', () => {
+      const completer = new QueryAutoCompleter('3.4.0', textCompleter, []);
+      const session = new EditSession('', new Mode());
+      const position = { row: 0, column: 0 };
+
+      it('returns no results', () => {
+        completer.getCompletions(editor, session, position, '', (error, results) => {
+          expect(error).to.equal(null);
+          expect(results).to.deep.equal([]);
+        });
+      });
+    });
+
     context('when the current token is a string', () => {
       context('when there are no previous autocompletions', () => {
         const completer = new QueryAutoCompleter('3.4.0', textCompleter, fields);
