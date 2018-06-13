@@ -833,5 +833,76 @@ describe('StageAutoCompleter', () => {
         });
       });
     });
+
+    context('when the current token is an comment', () => {
+      context('when it is a single line comment', () => {
+        context('comment is after expression', () => {
+          it('no autocompletion', () => {
+            const completer = new StageAutoCompleter('3.4.0', textCompleter, fields, '$match');
+            const session = new EditSession('{} //', new Mode());
+            const position = { row: 0, column: 5 };
+
+            completer.getCompletions(editor, session, position, '$', (error, results) => {
+              expect(error).to.equal(null);
+              expect(results.length).to.equal(0);
+            });
+          });
+        });
+
+        context('comment is on the beginning of the string', () => {
+          it('no autocompletion', () => {
+            const completer = new StageAutoCompleter('3.4.0', textCompleter, fields, '$match');
+            const session = new EditSession('//', new Mode());
+            const position = { row: 0, column: 2 };
+
+            completer.getCompletions(editor, session, position, '$', (error, results) => {
+              expect(error).to.equal(null);
+              expect(results.length).to.equal(0);
+            });
+          });
+        });
+
+        context('comment is on the beginning of the string with preceding space', () => {
+          it('no autocompletion', () => {
+            const completer = new StageAutoCompleter('3.4.0', textCompleter, fields, '$match');
+            const session = new EditSession(' //', new Mode());
+            const position = { row: 0, column: 3 };
+
+            completer.getCompletions(editor, session, position, '$', (error, results) => {
+              expect(error).to.equal(null);
+              expect(results.length).to.equal(0);
+            });
+          });
+        });
+      });
+
+      context('when it is a comment block', () => {
+        context('comment is on the beginning of editor', () => {
+          it('no autocompletion', () => {
+            const completer = new StageAutoCompleter('3.4.0', textCompleter, fields, '$match');
+            const session = new EditSession('/** * query - The query in MQL. */ {}', new Mode());
+            const position = { row: 0, column: 1 };
+
+            completer.getCompletions(editor, session, position, '$', (error, results) => {
+              expect(error).to.equal(null);
+              expect(results.length).to.equal(0);
+            });
+          });
+        });
+
+        context('symbol before comment on the beginning of editor', () => {
+          it('returns results', () => {
+            const completer = new StageAutoCompleter('3.4.0', textCompleter, fields, '$match');
+            const session = new EditSession('/** * query - The query in MQL. */ {}', new Mode());
+            const position = { row: 0, column: 0 };
+
+            completer.getCompletions(editor, session, position, '$', (error, results) => {
+              expect(error).to.equal(null);
+              expect(results.length).to.equal(31);
+            });
+          });
+        });
+      });
+    });
   });
 });
