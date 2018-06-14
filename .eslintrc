@@ -1,6 +1,6 @@
 {
   "ecmaFeatures": {
-    "blockBindings": true,
+    "blockBindings": true
   },
   "globals": {
     "expect": true,
@@ -13,6 +13,9 @@
   },
   "rules": {
     "strict": 0
+  },
+  "parserOptions": {
+    "ecmaVersion": 2017
   },
   "extends": ["mongodb-js/node"]
 }
