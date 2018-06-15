@@ -916,6 +916,101 @@ describe('StageAutoCompleter', () => {
               });
             });
           });
+
+          context('when an expression contains a division', () => {
+            context('when an input symbol is after a comment', () => {
+              it('no autocompletion', () => {
+                const completer = new StageAutoCompleter('3.4.0', textCompleter, fields, '$match');
+                const session = new EditSession('{x: \'/\'} //$', new Mode());
+                const position = { row: 0, column: 12 };
+
+                completer.getCompletions(editor, session, position, '$', (error, results) => {
+                  expect(error).to.equal(null);
+                  expect(results.length).to.equal(0);
+                });
+              });
+            });
+
+            context('when an input symbol is before a comment', () => {
+              it('returns results', () => {
+                const completer = new StageAutoCompleter('3.4.0', textCompleter, fields, '$match');
+                const session = new EditSession('{x: \'/\'} $//', new Mode());
+                const position = { row: 0, column: 10 };
+
+                completer.getCompletions(editor, session, position, '$', (error, results) => {
+                  expect(error).to.equal(null);
+                  expect(results.length).to.equal(31);
+                });
+              });
+            });
+
+            context('when an input symbol is inside a single quote string', () => {
+              it('returns results', () => {
+                const completer = new StageAutoCompleter('3.4.0', textCompleter, fields, '$match');
+                const session = new EditSession('{x: \'/$\'} //', new Mode());
+                const position = { row: 0, column: 6 };
+
+                completer.getCompletions(editor, session, position, '$', (error, results) => {
+                  expect(error).to.equal(null);
+                  expect(results.length).to.equal(1);
+                });
+              });
+            });
+
+            context('when an input symbol is inside a double quote string', () => {
+              it('returns results', () => {
+                const completer = new StageAutoCompleter('3.4.0', textCompleter, fields, '$match');
+                const session = new EditSession('{x: "/$"} //', new Mode());
+                const position = { row: 0, column: 7 };
+
+                completer.getCompletions(editor, session, position, '$', (error, results) => {
+                  expect(error).to.equal(null);
+                  expect(results.length).to.equal(1);
+                });
+              });
+            });
+          });
+
+          context('when an expression contains regex', () => {
+            context('when an input symbol is after a comment', () => {
+              it('no autocompletion', () => {
+                const completer = new StageAutoCompleter('3.4.0', textCompleter, fields, '$match');
+                const session = new EditSession('{x: /789$/} //$', new Mode());
+                const position = { row: 0, column: 15 };
+
+                completer.getCompletions(editor, session, position, '$', (error, results) => {
+                  expect(error).to.equal(null);
+                  expect(results.length).to.equal(0);
+                });
+              });
+            });
+
+            context('when an input symbol is before a comment', () => {
+              it('returns results', () => {
+                const completer = new StageAutoCompleter('3.4.0', textCompleter, fields, '$match');
+                const session = new EditSession('{x: /789$/} $//', new Mode());
+                const position = { row: 0, column: 13 };
+
+                completer.getCompletions(editor, session, position, '$', (error, results) => {
+                  expect(error).to.equal(null);
+                  expect(results.length).to.equal(31);
+                });
+              });
+            });
+
+            context('when an input symbol is inside an expression after regex', () => {
+              it('returns results', () => {
+                const completer = new StageAutoCompleter('3.4.0', textCompleter, fields, '$match');
+                const session = new EditSession('{x: /789$/$} $//', new Mode());
+                const position = { row: 0, column: 11 };
+
+                completer.getCompletions(editor, session, position, '$', (error, results) => {
+                  expect(error).to.equal(null);
+                  expect(results.length).to.equal(31);
+                });
+              });
+            });
+          });
         });
 
         context('when a comment is on the beginning of a string', () => {
