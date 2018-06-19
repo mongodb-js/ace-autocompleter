@@ -230,6 +230,25 @@ describe('StageAutoCompleter', () => {
             });
           });
 
+          context('when the server version is a RC', () => {
+            const completer = new StageAutoCompleter('4.0.0-rc6', textCompleter, fields, null);
+            const session = new EditSession('{ $conv', new Mode());
+            const position = { row: 0, column: 6 };
+
+            it('returns the matching conversion operator', () => {
+              completer.getCompletions(editor, session, position, '$conv', (error, results) => {
+                expect(error).to.equal(null);
+                expect(results).to.deep.equal([{
+                  meta: 'conv',
+                  name: '$convert',
+                  score: 1,
+                  value: '$convert',
+                  version: '3.7.2'
+                }]);
+              });
+            });
+          });
+
           context('when the prefix begins with $a', () => {
             const completer = new StageAutoCompleter('3.4.0', textCompleter, fields, null);
             const session = new EditSession('{ $a', new Mode());
