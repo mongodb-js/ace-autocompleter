@@ -201,9 +201,9 @@ describe('ValidationAutoCompleter', () => {
       });
 
       context('when query contains $jsonSchema', () => {
-        const completer = new ValidationAutoCompleter('3.4.0', textCompleter, fields);
-        const session = new EditSession('{ $jsonSchema: {  } }', new Mode());
-        const position = { row: 0, column: 2 };
+        const completer = new ValidationAutoCompleter('3.6.0', textCompleter, fields);
+        const session = new EditSession('{ $jsonSchema: { t } }', new Mode());
+        const position = { row: 0, column: 18 };
 
         it('returns all the query operators', () => {
           completer.getCompletions(editor, session, position, 't', (error, results) => {
@@ -215,7 +215,7 @@ describe('ValidationAutoCompleter', () => {
                 label: 'type',
                 score: 1,
                 meta: 'json-schema',
-                version: '0.0.0',
+                version: '3.6.0',
                 description: 'Enumerates the possible JSON types of the field'
               },
               {
@@ -224,7 +224,7 @@ describe('ValidationAutoCompleter', () => {
                 label: 'title',
                 score: 1,
                 meta: 'json-schema',
-                version: '0.0.0',
+                version: '3.6.0',
                 description: 'A descriptive title string with no effect'
               }
             ]);
