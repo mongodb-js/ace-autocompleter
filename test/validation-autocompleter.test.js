@@ -231,6 +231,36 @@ describe('ValidationAutoCompleter', () => {
           });
         });
       });
+
+      context('when query contains $jsonSchema and user enters BSON type aliases', () => {
+        const completer = new ValidationAutoCompleter('3.6.0', textCompleter, fields);
+        const session = new EditSession('{ $jsonSchema: { bsonType: "m" } }', new Mode());
+        const position = { row: 0, column: 29 };
+
+        it('returns all the query operators', () => {
+          completer.getCompletions(editor, session, position, 'm', (error, results) => {
+            expect(error).to.equal(null);
+            expect(results).to.deep.equal([
+              {
+                name: 'minKey',
+                value: 'minKey',
+                label: 'minKey',
+                score: 1,
+                meta: 'bson-type-aliases',
+                version: '3.6.0'
+              },
+              {
+                name: 'maxKey',
+                value: 'maxKey',
+                label: 'maxKey',
+                score: 1,
+                meta: 'bson-type-aliases',
+                version: '3.6.0'
+              }
+            ]);
+          });
+        });
+      });
     });
   });
 });

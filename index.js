@@ -8,3 +8,4 @@ module.exports.EXPRESSION_OPERATORS = require('./lib/constants/expression-operat
 module.exports.QUERY_OPERATORS = require('./lib/constants/query-operators');
 module.exports.STAGE_OPERATORS = require('./lib/constants/stage-operators');
 module.exports.JSON_SCHEMA = require('./lib/constants/json-schema');
+module.exports.BSON_TYPE_ALIASES = require('./lib/constants/bson-type-aliases');
