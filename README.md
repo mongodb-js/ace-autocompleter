@@ -1,10 +1,12 @@
 # mongodb-ace-autocompleter [![][travis_img]][travis_url] [![][npm_img]][npm_url]
 
-## MongoDB Ace Autocompleter
+> Provides MongoDB [custom ACE Editor auto-completers](https://github.com/ajaxorg/ace/wiki/How-to-enable-Autocomplete-in-the-Ace-editor)
 
-### Usage with Ace editor
+## Usage
 
-Autocompletion on aggregation pipeline stages:
+### Aggregation Pipelines
+
+Provides completions within the context of an individual aggregation pipeline stage:
 
 ```javascript
 import ace from 'brace';
@@ -31,7 +33,9 @@ const stageAutoCompleter = new StageAutoCompleter(
 tools.setCompleters([ stageAutoCompleter ]);
 ```
 
-Autocompletion on queries:
+### Queries
+
+Provides completions within the context of a `find(query)`:
 
 ```javascript
 import ace from 'brace';
@@ -56,6 +60,14 @@ const queryAutoCompleter = new QueryAutoCompleter(
 );
 tools.setCompleters([ queryAutoCompleter ]);
 ```
+
+## Related
+
+- [`mongodb-js/ace-mode`](https://github.com/mongodb-js/ace-mode) MongoDB highlighting rules for ACE.
+- [`mongodb-js/ace-theme`](https://github.com/mongodb-js/ace-theme) MongoDB syntax highlighting rules for ACE.
+- [`mongodb-js/stage-validator`](https://github.com/mongodb-js/stage-validator) Aggregation Pipeline Stage grammar.
+
+## Misc
 
 Utility function to convert from the fields returned from the field store to the
 Ace friendly format. (Can be done in a reducer in the app).
