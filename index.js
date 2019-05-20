@@ -5,6 +5,7 @@ module.exports.ValidationAutoCompleter = require('./lib/validation-autocompleter
 module.exports.ACCUMULATORS = require('./lib/constants/accumulators');
 module.exports.BSON_TYPES = require('./lib/constants/bson-types');
 module.exports.EXPRESSION_OPERATORS = require('./lib/constants/expression-operators');
+module.exports.CONVERSION_OPERATORS = require('./lib/constants/conversion-operators');
 module.exports.QUERY_OPERATORS = require('./lib/constants/query-operators');
 module.exports.STAGE_OPERATORS = require('./lib/constants/stage-operators');
 module.exports.JSON_SCHEMA = require('./lib/constants/json-schema');
