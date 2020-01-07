@@ -63,8 +63,9 @@ tools.setCompleters([ queryAutoCompleter ]);
 
 ## Related
 
-- [`mongodb-js/ace-mode`](https://github.com/mongodb-js/ace-mode) MongoDB highlighting rules for ACE.
-- [`mongodb-js/ace-theme`](https://github.com/mongodb-js/ace-theme) MongoDB syntax highlighting rules for ACE.
+- [`mongodb-js/ace-mode`](https://github.com/mongodb-js/ace-mode) MongoDB highlighting rules for ACE Editor.
+- [`mongodb-js/ace-theme`](https://github.com/mongodb-js/ace-theme) CSS highlighting styles for multiline ACE Editor.
+- [`mongodb-js/ace-theme-query`](https://github.com/mongodb-js/ace-theme-query) CSS highlighting styles for ACE Editor as single line input.
 - [`mongodb-js/stage-validator`](https://github.com/mongodb-js/stage-validator) Aggregation Pipeline Stage grammar.
 
 ## Misc
