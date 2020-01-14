@@ -40,6 +40,6 @@
     "sinon-chai": "^3.0.0"
   },
   "dependencies": {
-    "semver": "^5.5.0"
+    "semver": "^7.1.1"
   }
 }
