@@ -197,7 +197,7 @@ describe('StageAutoCompleter', () => {
 
           context('when the prefix begins with $', () => {
             context('when the token is on the same line', () => {
-              const completer = new StageAutoCompleter('4.2.0', textCompleter, fields, null);
+              const completer = new StageAutoCompleter('4.4.0', textCompleter, fields, null);
               const session = new EditSession('{ $', new Mode());
               const position = { row: 0, column: 2 };
 
@@ -210,7 +210,7 @@ describe('StageAutoCompleter', () => {
             });
 
             context('when the token is on another line', () => {
-              const completer = new StageAutoCompleter('4.2.0', textCompleter, fields, null);
+              const completer = new StageAutoCompleter('4.4.0', textCompleter, fields, null);
               const session = new EditSession('{\n  $', new Mode());
               const position = { row: 1, column: 3 };
 
