@@ -29,7 +29,7 @@
     "jsdom-global": "^3.0.2",
     "mocha": "^7.0.0",
     "mongodb-js-precommit": "^2.0.0",
-    "sinon": "^8.0.4",
+    "sinon": "^9.2.0",
     "sinon-chai": "^3.4.0"
   },
   "dependencies": {
