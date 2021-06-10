@@ -221,6 +221,19 @@ describe('StageAutoCompleter', () => {
                 });
               });
             });
+
+            context('when prerelease version', () => {
+              const completer = new StageAutoCompleter('5.0.0-rc0', textCompleter, fields, null);
+              const session = new EditSession('{\n  $', new Mode());
+              const position = { row: 1, column: 3 };
+
+              it('returns all the expression operators', () => {
+                completer.getCompletions(editor, session, position, '$', (error, results) => {
+                  expect(error).to.equal(null);
+                  expect(results).to.deep.equal(ALL_OPS);
+                });
+              });
+            });
           });
 
           context('when the prefix begins with an unknown', () => {
