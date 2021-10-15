@@ -1,4 +1,4 @@
-# mongodb-ace-autocompleter [![][travis_img]][travis_url] [![][npm_img]][npm_url]
+# mongodb-ace-autocompleter [![][npm_img]][npm_url]
 
 > Provides MongoDB [custom ACE Editor auto-completers](https://github.com/ajaxorg/ace/wiki/How-to-enable-Autocomplete-in-the-Ace-editor)
 
@@ -92,7 +92,5 @@ const process = (fields) => {
 
 Apache 2.0
 
-[travis_img]: https://travis-ci.org/mongodb-js/ace-autocompleter.svg?branch=master
-[travis_url]: https://travis-ci.org/mongodb-js/ace-autocompleter
 [npm_img]: https://img.shields.io/npm/v/mongodb-ace-autocompleter.svg?style=flat-square
 [npm_url]: https://www.npmjs.org/package/mongodb-ace-autocompleter

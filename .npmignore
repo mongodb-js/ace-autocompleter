@@ -1,5 +1,4 @@
 .eslintrc
-.travis.yml
 README.md
 test/
 .github/
