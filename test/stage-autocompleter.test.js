@@ -196,41 +196,45 @@ describe('StageAutoCompleter', () => {
           });
 
           context('when the prefix begins with $', () => {
-            context('when the token is on the same line', () => {
-              const completer = new StageAutoCompleter('5.0.0', textCompleter, fields, null);
-              const session = new EditSession('{ $', new Mode());
-              const position = { row: 0, column: 2 };
+            context('when the latest version of server', () => {
+              const latestServer = '5.1.0';
 
-              it('returns all the expression operators', () => {
-                completer.getCompletions(editor, session, position, '$', (error, results) => {
-                  expect(error).to.equal(null);
-                  expect(results).to.deep.equal(ALL_OPS);
+              context('when the token is on the same line', () => {
+                const completer = new StageAutoCompleter(latestServer, textCompleter, fields, null);
+                const session = new EditSession('{ $', new Mode());
+                const position = { row: 0, column: 2 };
+
+                it('returns all the expression operators', () => {
+                  completer.getCompletions(editor, session, position, '$', (error, results) => {
+                    expect(error).to.equal(null);
+                    expect(results).to.deep.equal(ALL_OPS);
+                  });
                 });
               });
-            });
 
-            context('when the token is on another line', () => {
-              const completer = new StageAutoCompleter('5.0.0', textCompleter, fields, null);
-              const session = new EditSession('{\n  $', new Mode());
-              const position = { row: 1, column: 3 };
+              context('when the token is on another line', () => {
+                const completer = new StageAutoCompleter(latestServer, textCompleter, fields, null);
+                const session = new EditSession('{\n  $', new Mode());
+                const position = { row: 1, column: 3 };
 
-              it('returns all the expression operators', () => {
-                completer.getCompletions(editor, session, position, '$', (error, results) => {
-                  expect(error).to.equal(null);
-                  expect(results).to.deep.equal(ALL_OPS);
+                it('returns all the expression operators', () => {
+                  completer.getCompletions(editor, session, position, '$', (error, results) => {
+                    expect(error).to.equal(null);
+                    expect(results).to.deep.equal(ALL_OPS);
+                  });
                 });
               });
-            });
 
-            context('when prerelease version', () => {
-              const completer = new StageAutoCompleter('5.0.0-rc0', textCompleter, fields, null);
-              const session = new EditSession('{\n  $', new Mode());
-              const position = { row: 1, column: 3 };
+              context('when prerelease version', () => {
+                const completer = new StageAutoCompleter(`${latestServer}-rc0`, textCompleter, fields, null);
+                const session = new EditSession('{\n  $', new Mode());
+                const position = { row: 1, column: 3 };
 
-              it('returns all the expression operators', () => {
-                completer.getCompletions(editor, session, position, '$', (error, results) => {
-                  expect(error).to.equal(null);
-                  expect(results).to.deep.equal(ALL_OPS);
+                it('returns all the expression operators', () => {
+                  completer.getCompletions(editor, session, position, '$', (error, results) => {
+                    expect(error).to.equal(null);
+                    expect(results).to.deep.equal(ALL_OPS);
+                  });
                 });
               });
             });
