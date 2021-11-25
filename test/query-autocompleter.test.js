@@ -1,12 +1,12 @@
-const { EditSession } = require('brace');
-const ace = require('brace');
+const { EditSession } = require('ace-builds');
+require('ace-builds');
 const { QueryAutoCompleter, QUERY_OPERATORS } = require('../');
 
-require('brace/mode/javascript');
-require('brace/ext/language_tools');
+require('ace-builds/src-noconflict/mode-javascript');
+require('ace-builds/src-noconflict/ext-language_tools');
 
-const { Mode } = ace.acequire('ace/mode/javascript');
-const { textCompleter } = ace.acequire('ace/ext/language_tools');
+const { Mode } = require('ace-builds/src-noconflict/mode-javascript');
+const { textCompleter } = require('ace-builds/src-noconflict/ext-language_tools');
 
 describe('QueryAutoCompleter', () => {
   const fields = [
