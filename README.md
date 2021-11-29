@@ -9,11 +9,11 @@
 Provides completions within the context of an individual aggregation pipeline stage:
 
 ```javascript
-import ace from 'ace-builds';
+import ace from 'brace';
 import { StageAutoCompleter } from 'mongodb-ace-autocompleter';
 
 // Get the basic text completer from Ace for fallback suggestions.
-import tools from 'ace-builds/src-noconflict/ext-language_tools';
+const tools = ace.acequire('ace/ext/language_tools');
 const textCompleter = tools.textCompleter;
 
 // For auto completion of agg pipeline stages, pass the server version,
@@ -38,11 +38,11 @@ tools.setCompleters([ stageAutoCompleter ]);
 Provides completions within the context of a `find(query)`:
 
 ```javascript
-import ace from 'ace-builds';
+import ace from 'brace';
 import { QueryAutoCompleter } from 'mongodb-ace-autocompleter';
 
 // Get the basic text completer from Ace for fallback suggestions.
-import tools from 'ace-builds/src-noconflict/ext-language_tools';
+const tools = ace.acequire('ace/ext/language_tools');
 const textCompleter = tools.textCompleter;
 
 // For auto completion of queries, pass the server version,

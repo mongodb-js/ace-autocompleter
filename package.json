@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/mongodb-js/ace-autocompleter#readme",
   "devDependencies": {
-    "ace-builds": "^1.4.13",
+    "brace": "^0.11.1",
     "chai": "^4.2.0",
     "eslint-config-mongodb-js": "^5.0.3",
     "jsdom": "^16.7.0",
