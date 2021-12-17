@@ -194,7 +194,7 @@ describe('StageAutoCompleter', () => {
 
           context('when the prefix begins with $', () => {
             context('when the latest version of server', () => {
-              const latestServer = '5.1.0';
+              const latestServer = '5.2.0';
 
               context('when the token is on the same line', () => {
                 const completer = new StageAutoCompleter(latestServer, textCompleter, fields, null);
