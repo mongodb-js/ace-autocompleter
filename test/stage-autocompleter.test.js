@@ -1,5 +1,7 @@
 const { EditSession } = require('ace-builds');
 require('ace-builds');
+const sinon = require('sinon');
+const { expect } = require('chai');
 const {
   StageAutoCompleter,
   EXPRESSION_OPERATORS,

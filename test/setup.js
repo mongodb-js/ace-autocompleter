@@ -15,9 +15,6 @@ require('jsdom-global')('', {
   runScripts: 'dangerously'
 });
 
-global.sinon = require('sinon');
-global.expect = chai.expect;
-
 class Worker {
   postMessage() {
     return true;

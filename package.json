@@ -4,7 +4,9 @@
   "description": "Ace Editor Autocompleter for MongoDB Queries & Agg Pipelines",
   "main": "index.js",
   "scripts": {
-    "check": "mongodb-js-precommit",
+    "depcheck": "depcheck",
+    "lint": "eslint .",
+    "check": "npm run lint && npm run depcheck",
     "test": "mocha --recursive test/setup.js ./test/**/*.test.js",
     "release": "release-it"
   },
@@ -25,6 +27,8 @@
   "devDependencies": {
     "ace-builds": "^1.4.13",
     "chai": "^4.2.0",
+    "depcheck": "^1.4.3",
+    "eslint": "^5.16.0",
     "eslint-config-mongodb-js": "^5.0.3",
     "jsdom": "^16.7.0",
     "jsdom-global": "^3.0.2",
