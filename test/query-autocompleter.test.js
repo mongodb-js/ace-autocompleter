@@ -1,5 +1,8 @@
 const { EditSession } = require('ace-builds');
 require('ace-builds');
+const sinon = require('sinon');
+const { expect } = require('chai');
+
 const { QueryAutoCompleter, QUERY_OPERATORS } = require('../');
 
 require('ace-builds/src-noconflict/mode-javascript');
