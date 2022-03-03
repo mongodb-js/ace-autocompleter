@@ -88,6 +88,9 @@ const process = (fields) => {
 };
 ```
 
+## Release
+```npm run release```
+
 ## License
 
 Apache 2.0
