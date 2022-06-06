@@ -22,3 +22,19 @@ module.exports.ATLAS = ATLAS;
 module.exports.ADL = ADL;
 module.exports.ON_PREM = ON_PREM;
 module.exports.ENVS = ENVS;
+
+const {
+  DATABASE,
+  COLLECTION,
+  VIEW,
+  TIME_SERIES,
+  ANY_COLLECTION_NAMESPACE,
+  ANY_NAMESPACE,
+} = require('./lib/constants/ns');
+
+module.exports.DATABASE = DATABASE;
+module.exports.COLLECTION = COLLECTION;
+module.exports.VIEW = VIEW;
+module.exports.TIME_SERIES = TIME_SERIES;
+module.exports.ANY_COLLECTION_NAMESPACE = ANY_COLLECTION_NAMESPACE;
+module.exports.ANY_NAMESPACE = ANY_NAMESPACE;
