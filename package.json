@@ -26,6 +26,7 @@
   "homepage": "https://github.com/mongodb-js/ace-autocompleter#readme",
   "devDependencies": {
     "ace-builds": "^1.4.13",
+    "acorn": "^8.7.1",
     "chai": "^4.2.0",
     "depcheck": "^1.4.3",
     "eslint": "^5.16.0",
