@@ -1,6 +1,6 @@
 {
   "name": "mongodb-ace-autocompleter",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Ace Editor Autocompleter for MongoDB Queries & Agg Pipelines",
   "main": "index.js",
   "scripts": {
